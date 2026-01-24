@@ -1,0 +1,96 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.welcomeSection h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcomeSection p {
+    color: var(--text-secondary);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.statCardTitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.statCardValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.statCardSub {
+    font-size: 0.8rem;
+    color: var(--success);
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activityItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.activityInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.activityIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.activityText h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.125rem;
+}
+
+.activityText p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.quickActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
