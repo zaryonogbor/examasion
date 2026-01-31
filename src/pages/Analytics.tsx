@@ -6,7 +6,7 @@ export const Analytics = () => {
     return (
         <div className="animate-fade-in">
             <div className={styles.analyticsGrid}>
-                <Card padding="lg" hoverable>
+                <Card padding="lg" hoverable className={styles.cardBlue}>
                     <div className={styles.statHeader}>
                         <div className={`${styles.iconWrapper} ${styles.blueIcon}`}>
                             <Award size={28} />
@@ -21,7 +21,7 @@ export const Analytics = () => {
                     </div>
                 </Card>
 
-                <Card padding="lg" hoverable>
+                <Card padding="lg" hoverable className={styles.cardGreen}>
                     <div className={styles.statHeader}>
                         <div className={`${styles.iconWrapper} ${styles.greenIcon}`}>
                             <BarChart size={28} />
@@ -36,7 +36,7 @@ export const Analytics = () => {
                     </p>
                 </Card>
 
-                <Card padding="lg" hoverable>
+                <Card padding="lg" hoverable className={styles.cardYellow}>
                     <div className={styles.statHeader}>
                         <div className={`${styles.iconWrapper} ${styles.yellowIcon}`}>
                             <Clock size={28} />

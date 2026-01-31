@@ -36,6 +36,7 @@ export const Dashboard = () => {
 
             <div className={styles.statsGrid}>
                 <Card className={`${styles.statCard} ${styles.cardBlue}`} hoverable>
+                    <img src="/assets/books-icon.png" alt="Books" className={`${styles.statIcon} ${styles.blueStatIcon}`} />
                     <div className={styles.statCardTitle}>Study Materials</div>
                     <div className={styles.statCardValue}>12</div>
                     <div className={styles.statCardSub}>
@@ -44,6 +45,7 @@ export const Dashboard = () => {
                     </div>
                 </Card>
                 <Card className={`${styles.statCard} ${styles.cardPurple}`} hoverable>
+                    <img src="/assets/target-small-icon.svg" alt="Books" className={`${styles.statIcon} ${styles.purpleStatIcon}`} />
                     <div className={styles.statCardTitle}>Tests Mastering</div>
                     <div className={styles.statCardValue}>28</div>
                     <div className={styles.statCardSub}>
@@ -51,7 +53,8 @@ export const Dashboard = () => {
                         <span className={styles.trendUp}>+5 this session</span>
                     </div>
                 </Card>
-                <Card className={`${styles.statCard} ${styles.cardOrange}`} hoverable>
+                <Card className={`${styles.statCard} ${styles.cardOrange}`}  hoverable>
+                    <img src="/assets/computer-icon.svg" alt="Books" className={`${styles.statIcon} ${styles.orangeStatIcon}`} />
                     <div className={styles.statCardTitle}>Knowledge Level</div>
                     <div className={styles.statCardValue}>84%</div>
                     <div className={styles.statCardSub}>

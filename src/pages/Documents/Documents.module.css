@@ -18,10 +18,17 @@
 }
 
 .premiumSearch :global(input) {
-    background: white !important;
+    background: var(--surface) !important;
     border-radius: var(--radius-full) !important;
     padding-left: 1.5rem !important;
     border: 1px solid var(--border) !important;
+    color: var(--text-main) !important;
+}
+
+.premiumSearch :global(input):focus {
+    outline: none !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
 }
 
 /* Document Grid */
@@ -32,9 +39,10 @@
 }
 
 .docCard {
-    background: white;
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    color: white;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
+    border: none;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -54,11 +62,12 @@
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: var(--surface-secondary);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: white;
 }
 
 .docHeader {
@@ -69,7 +78,7 @@
 
 .docTitle {
     font-weight: 700;
-    color: var(--text-main);
+    color: white;
     font-size: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -79,7 +88,7 @@
 
 .docSubject {
     font-size: 0.8125rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -90,12 +99,13 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1rem;
-    border-top: 1px solid var(--border-light);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .docDate {
     font-size: 0.8125rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .statusBadge {
@@ -107,18 +117,18 @@
 }
 
 .statusReady {
-    background: #ecfdf5;
-    color: #10b981;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .statusProcessing {
-    background: #eff6ff;
-    color: #3b82f6;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .statusError {
-    background: #fef2f2;
-    color: #ef4444;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 /* Detail View */
@@ -129,7 +139,7 @@
 }
 
 .metaSection {
-    background: white;
+    background: var(--surface);
     padding: 2.5rem;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border);
@@ -154,7 +164,7 @@
 }
 
 .summarySection {
-    background: white;
+    background: var(--surface);
     padding: 3rem;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border);
@@ -209,7 +219,7 @@
 .uploadIconPulse {
     width: 80px;
     height: 80px;
-    background: white;
+    background: var(--surface);
     border-radius: 50%;
     display: flex;
     align-items: center;

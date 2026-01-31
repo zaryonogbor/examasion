@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, User, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, User, Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './AppLayout.module.css';
 import { clsx } from 'clsx';
 
 export const AppLayout = () => {
     const location = useLocation();
+    const { theme, toggleTheme } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
@@ -83,14 +85,24 @@ export const AppLayout = () => {
             </aside>
             <main className={styles.main}>
                 <header className={styles.header}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <button
+                            className={styles.menuButton}
+                            onClick={() => setIsMobileMenuOpen(true)}
+                            aria-label="Open menu"
+                        >
+                            <Menu size={20} />
+                        </button>
+                        <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
+                    </div>
+
                     <button
-                        className={styles.menuButton}
-                        onClick={() => setIsMobileMenuOpen(true)}
-                        aria-label="Open menu"
+                        onClick={toggleTheme}
+                        className={styles.themeToggle}
+                        aria-label="Toggle theme"
                     >
-                        <Menu size={20} />
+                        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
                     </button>
-                    <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
                 </header>
                 <div className={styles.content}>
                     <Outlet />

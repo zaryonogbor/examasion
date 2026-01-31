@@ -4,6 +4,7 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
 import { LogOut, Shield, User, Info, Camera } from 'lucide-react';
+import styles from './Profile.module.css';
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -31,45 +32,21 @@ export const Profile = () => {
     };
 
     return (
-        <div className="animate-fade-in" style={{ maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+        <div className={`animate-fade-in ${styles.container}`}>
             <Card padding="lg" hoverable={false}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '3rem' }}>
+                <div className={styles.headerSection}>
                     <div
+                        className={styles.avatarContainer}
                         onClick={triggerFileInput}
                         onMouseEnter={() => setIsHovering(true)}
                         onMouseLeave={() => setIsHovering(false)}
                         style={{
-                            width: '120px',
-                            height: '120px',
-                            borderRadius: '50%',
-                            background: avatarUrl ? `url(${avatarUrl}) center/cover no-repeat` : 'linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%)',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '3.5rem',
-                            fontWeight: 800,
-                            marginBottom: '1.5rem',
-                            boxShadow: '0 10px 25px -5px var(--primary-glow)',
-                            fontFamily: 'Outfit, sans-serif',
-                            cursor: 'pointer',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            transition: 'transform 0.2s ease',
-                            transform: isHovering ? 'scale(1.05)' : 'scale(1)'
+                            background: avatarUrl ? `url(${avatarUrl}) center/cover no-repeat` : undefined
                         }}>
                         {!avatarUrl && 'Z'}
 
                         {isHovering && (
-                            <div style={{
-                                position: 'absolute',
-                                inset: 0,
-                                background: 'rgba(0,0,0,0.4)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                backdropFilter: 'blur(2px)'
-                            }}>
+                            <div className={styles.avatarOverlay}>
                                 <Camera size={32} color="white" />
                             </div>
                         )}
@@ -81,26 +58,26 @@ export const Profile = () => {
                         accept="image/*"
                         style={{ display: 'none' }}
                     />
-                    <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.25rem' }}>Zaryon Ogbor</h2>
-                    <p style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Premium Student Plan</p>
+                    <h2 className={styles.userName}>Zaryon Ogbor</h2>
+                    <p className={styles.userPlan}>Premium Student Plan</p>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.75rem' }}>
+                <div className={styles.formSection}>
+                    <div className={styles.sectionHeader}>
                         <User size={20} color="var(--primary)" />
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Personal Identity</h3>
+                        <h3 className={styles.sectionTitle}>Personal Identity</h3>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                        <Input label="Display Name" defaultValue="Zaryon Ogbor" />
-                        <Input label="Student ID" defaultValue="EX-90210" disabled />
+                    <div className={styles.inputGrid}>
+                        <Input label="Display Name" defaultValue="Zaryon Ogbor" className={styles.premiumInput} />
+                        <Input label="Student ID" defaultValue="EX-90210" disabled className={styles.premiumInput} />
                     </div>
-                    <Input label="Notification Email" defaultValue="user@example.com" />
+                    <Input label="Notification Email" defaultValue="user@example.com" className={styles.premiumInput} />
 
-                    <div style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                    <div className={styles.securitySection}>
+                        <div className={styles.securityHeader}>
                             <Shield size={20} color="var(--primary)" />
-                            <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Security Center</h3>
+                            <h3 className={styles.sectionTitle}>Security Center</h3>
                         </div>
                         <Button variant="outline">Update Access Password</Button>
                     </div>
@@ -108,14 +85,14 @@ export const Profile = () => {
             </Card>
 
             <Card padding="lg">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div className={styles.sectionHeader} style={{ borderBottom: 'none', marginBottom: '1rem', paddingBottom: 0 }}>
                     <Info size={20} color="var(--text-muted)" />
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Operational Diagnostics</h3>
+                    <h3 className={styles.sectionTitle}>Operational Diagnostics</h3>
                 </div>
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.7 }}>
+                <p className={styles.infoText}>
                     Your session is currently running on the demo cloud environment. All generated questions and documents are processed using the Examasion Core Intelligence engine.
                 </p>
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                <div className={styles.actionRow}>
                     <Button
                         variant="danger"
                         onClick={handleLogout}
