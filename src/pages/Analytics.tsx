@@ -1,84 +1,94 @@
-import React from 'react';
 import { Card } from '../components/ui/Card';
 import { BarChart, Clock, Award, AlertCircle } from 'lucide-react';
+import styles from './Analytics.module.css';
 
 export const Analytics = () => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                <Card padding="lg">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                        <div style={{ padding: '0.75rem', backgroundColor: '#e0f2fe', borderRadius: '50%', color: 'var(--primary)' }}>
-                            <Award size={24} />
+        <div className="animate-fade-in">
+            <div className={styles.analyticsGrid}>
+                <Card padding="lg" hoverable>
+                    <div className={styles.statHeader}>
+                        <div className={`${styles.iconWrapper} ${styles.blueIcon}`}>
+                            <Award size={28} />
                         </div>
-                        <div>
-                            <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Average Score</div>
-                            <div style={{ fontSize: '1.75rem', fontWeight: 700 }}>84%</div>
+                        <div className={styles.statInfo}>
+                            <div className={styles.label}>Average Score</div>
+                            <div className={styles.value}>84%</div>
                         </div>
                     </div>
-                    <div style={{ width: '100%', height: '8px', backgroundColor: '#f1f5f9', borderRadius: '4px', overflow: 'hidden' }}>
-                        <div style={{ width: '84%', height: '100%', backgroundColor: 'var(--primary)' }}></div>
-                    </div>
-                </Card>
-
-                <Card padding="lg">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                        <div style={{ padding: '0.75rem', backgroundColor: '#dcfce7', borderRadius: '50%', color: '#166534' }}>
-                            <BarChart size={24} />
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Tests Completed</div>
-                            <div style={{ fontSize: '1.75rem', fontWeight: 700 }}>28</div>
-                        </div>
+                    <div className={styles.progressBar}>
+                        <div className={styles.progressFill} style={{ width: '84%' }}></div>
                     </div>
                 </Card>
 
-                <Card padding="lg">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                        <div style={{ padding: '0.75rem', backgroundColor: '#fef9c3', borderRadius: '50%', color: '#854d0e' }}>
-                            <Clock size={24} />
+                <Card padding="lg" hoverable>
+                    <div className={styles.statHeader}>
+                        <div className={`${styles.iconWrapper} ${styles.greenIcon}`}>
+                            <BarChart size={28} />
                         </div>
-                        <div>
-                            <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Study Time</div>
-                            <div style={{ fontSize: '1.75rem', fontWeight: 700 }}>12h 45m</div>
+                        <div className={styles.statInfo}>
+                            <div className={styles.label}>Tests Completed</div>
+                            <div className={styles.value}>28</div>
                         </div>
                     </div>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ color: 'var(--success)', fontWeight: 600 }}>+5</span> this week
+                    </p>
+                </Card>
+
+                <Card padding="lg" hoverable>
+                    <div className={styles.statHeader}>
+                        <div className={`${styles.iconWrapper} ${styles.yellowIcon}`}>
+                            <Clock size={28} />
+                        </div>
+                        <div className={styles.statInfo}>
+                            <div className={styles.label}>Study Time</div>
+                            <div className={styles.value}>12h 45m</div>
+                        </div>
+                    </div>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                        Focus level: <span style={{ fontWeight: 600 }}>High</span>
+                    </p>
                 </Card>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
-                <Card>
-                    <h3 style={{ marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border)' }}>Weak Topics</h3>
+            <div className={styles.detailsGrid}>
+                <Card padding="lg">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                        <AlertCircle size={20} color="var(--error)" />
+                        <h3 className={styles.sectionHeader} style={{ marginBottom: 0, paddingBottom: 0, borderBottom: 'none' }}>
+                            Areas for Improvement
+                        </h3>
+                    </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>Organic Chemistry - Nomenclature</span>
-                            <span style={{ fontWeight: 600, color: 'var(--error)' }}>45%</span>
+                        <div className={styles.topicItem}>
+                            <span className={styles.topicName}>Organic Chemistry - Nomenclature</span>
+                            <span className={styles.topicScore} style={{ color: 'var(--error)' }}>45%</span>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>Calculus - Integration by Parts</span>
-                            <span style={{ fontWeight: 600, color: 'var(--warning)' }}>62%</span>
+                        <div className={styles.topicItem}>
+                            <span className={styles.topicName}>Calculus - Integration by Parts</span>
+                            <span className={styles.topicScore} style={{ color: 'var(--warning)' }}>62%</span>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span>History - Industrial Revolution</span>
-                            <span style={{ fontWeight: 600, color: 'var(--warning)' }}>68%</span>
+                        <div className={styles.topicItem}>
+                            <span className={styles.topicName}>History - Industrial Revolution</span>
+                            <span className={styles.topicScore} style={{ color: 'var(--warning)' }}>68%</span>
                         </div>
                     </div>
                 </Card>
 
-                <Card>
-                    <h3 style={{ marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border)' }}>Recent Performance</h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <Card padding="lg">
+                    <h3 className={styles.sectionHeader}>Performance History</h3>
+                    <div className={styles.performanceList}>
                         {[92, 78, 85, 88, 72].map((score, i) => (
-                            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <div style={{ minWidth: '80px', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Test #{5 - i}</div>
-                                <div style={{ flex: 1, height: '8px', backgroundColor: '#f1f5f9', borderRadius: '4px', overflow: 'hidden' }}>
-                                    <div style={{
+                            <div key={i} className={styles.performanceRow}>
+                                <div className={styles.testLabel}>Test #{5 - i}</div>
+                                <div className={styles.perfBar}>
+                                    <div className={styles.perfFill} style={{
                                         width: `${score}%`,
-                                        height: '100%',
                                         backgroundColor: score >= 80 ? 'var(--success)' : score >= 60 ? 'var(--warning)' : 'var(--error)'
                                     }}></div>
                                 </div>
-                                <div style={{ minWidth: '40px', textAlign: 'right', fontWeight: 600 }}>{score}%</div>
+                                <div className={styles.perfValue}>{score}%</div>
                             </div>
                         ))}
                     </div>

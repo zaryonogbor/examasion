@@ -1,58 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
 
 :root {
-  /* Colors */
-  --primary: #0ea5e9;
-  /* Sky blue 500 */
-  --primary-hover: #0284c7;
-  /* Sky blue 600 */
-  --primary-light: #e0f2fe;
-  /* Sky blue 100 */
-  --secondary: #64748b;
-  /* Slate 500 */
-  --secondary-light: #f1f5f9;
-  /* Slate 100 */
+  /* Dynamic Design System 2026 */
 
-  --background: #ffffff;
-  --surface: #f8fafc;
-  /* Slate 50 */
-  --surface-hover: #f1f5f9;
+  /* Primary Palette - Indigo/Violet Gradient */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-glow: rgba(99, 102, 241, 0.4);
+  --accent: #8b5cf6;
 
+  /* Backgrounds & Surfaces */
+  --background: #fdfdfd;
+  --surface: #ffffff;
+  --surface-secondary: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  /* Neutral Palette */
   --text-main: #0f172a;
-  /* Slate 900 */
   --text-secondary: #475569;
-  /* Slate 600 */
   --text-muted: #94a3b8;
-  /* Slate 400 */
-
   --border: #e2e8f0;
-  /* Slate 200 */
+  --border-light: #f1f5f9;
 
-  --success: #22c55e;
+  /* Feedback */
+  --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+  --info: #3b82f6;
 
-  /* Spacing */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  /* Spacing & Radius */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Premium Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 8px 16px -4px var(--primary-glow);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background-color: var(--surface);
+  background-color: var(--background);
   color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
 h1,
@@ -61,47 +67,14 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  font-weight: 600;
-  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-p {
-  margin: 0;
-  line-height: 1.6;
-}
-
-button {
-  font-family: inherit;
-}
-
-/* Utilities */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.bg-white {
-  background-color: var(--background);
-}
-
-.bg-surface {
-  background-color: var(--surface);
-}
-
-/* Custom Scrollbar */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -110,9 +83,60 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* Layout Utilities */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.premium-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }

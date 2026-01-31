@@ -1,16 +1,17 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+// Firebase imports - uncomment when configuring Firebase
+// import { initializeApp } from 'firebase/app';
+// import { getAuth } from 'firebase/auth';
+// import { getFirestore } from 'firebase/firestore';
+// import { getStorage } from 'firebase/storage';
 
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID
-};
+// const firebaseConfig = {
+//     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+//     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+//     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+//     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+//     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+//     appId: import.meta.env.VITE_FIREBASE_APP_ID
+// };
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -21,6 +22,7 @@ const firebaseConfig = {
 // export const storage = getStorage(app);
 
 // For demo purposes, we're not initializing to avoid errors before config
-export const auth = {} as any;
-export const db = {} as any;
-export const storage = {} as any;
+export const auth = {} as ReturnType<typeof import('firebase/auth').getAuth>;
+export const db = {} as ReturnType<typeof import('firebase/firestore').getFirestore>;
+export const storage = {} as ReturnType<typeof import('firebase/storage').getStorage>;
+

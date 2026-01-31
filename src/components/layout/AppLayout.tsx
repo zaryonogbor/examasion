@@ -1,11 +1,12 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, User } from 'lucide-react';
+import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, User, Menu, X } from 'lucide-react';
 import styles from './AppLayout.module.css';
 import { clsx } from 'clsx';
 
 export const AppLayout = () => {
     const location = useLocation();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
         { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
@@ -16,6 +17,21 @@ export const AppLayout = () => {
         { icon: User, label: 'Profile', path: '/profile' },
     ];
 
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [location.pathname]);
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
+
     const getPageTitle = () => {
         const item = navItems.find(i => location.pathname.startsWith(i.path));
         if (location.pathname.includes('/test/')) return 'Practice Test';
@@ -25,9 +41,23 @@ export const AppLayout = () => {
 
     return (
         <div className={styles.layout}>
-            <aside className={styles.sidebar}>
-                <div className={styles.brand}>
-                    Examation
+            {isMobileMenuOpen && (
+                <div
+                    className={styles.overlay}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-hidden="true"
+                />
+            )}
+            <aside className={clsx(styles.sidebar, isMobileMenuOpen && styles.sidebarOpen)}>
+                <div className={styles.sidebarHeader}>
+                    <div className={styles.brand}>Examasion</div>
+                    <button
+                        className={styles.closeButton}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-label="Close menu"
+                    >
+                        <X size={24} />
+                    </button>
                 </div>
                 <nav className={styles.nav}>
                     {navItems.map((item) => (
@@ -53,7 +83,14 @@ export const AppLayout = () => {
             </aside>
             <main className={styles.main}>
                 <header className={styles.header}>
-                    <h3>{getPageTitle()}</h3>
+                    <button
+                        className={styles.menuButton}
+                        onClick={() => setIsMobileMenuOpen(true)}
+                        aria-label="Open menu"
+                    >
+                        <Menu size={20} />
+                    </button>
+                    <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
                 </header>
                 <div className={styles.content}>
                     <Outlet />

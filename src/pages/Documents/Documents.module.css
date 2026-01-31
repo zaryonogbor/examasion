@@ -1,118 +1,255 @@
 .pageContainer {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1.5rem;
 }
 
-.tableContainer {
-    background-color: white;
+.searchWrapper {
+    flex: 1;
+    max-width: 400px;
+}
+
+.premiumSearch :global(input) {
+    background: white !important;
+    border-radius: var(--radius-full) !important;
+    padding-left: 1.5rem !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* Document Grid */
+.documentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.docCard {
+    background: white;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     overflow: hidden;
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
+.docCard:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
 }
 
-.table th {
-    text-align: left;
-    padding: 1rem 1.5rem;
-    background-color: var(--surface);
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 0.875rem;
-    border-bottom: 1px solid var(--border);
+.docIconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--surface-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
 }
 
-.table td {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
+.docHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.docTitle {
+    font-weight: 700;
     color: var(--text-main);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.table tr:last-child td {
-    border-bottom: none;
+.docSubject {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.docMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.docDate {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
 }
 
 .statusBadge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.625rem;
-    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
     font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: capitalize;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .statusReady {
-    background-color: #dcfce7;
-    color: #166534;
+    background: #ecfdf5;
+    color: #10b981;
 }
 
 .statusProcessing {
-    background-color: #e0f2fe;
-    color: #0369a1;
+    background: #eff6ff;
+    color: #3b82f6;
 }
 
 .statusError {
-    background-color: #fee2e2;
-    color: #991b1b;
+    background: #fef2f2;
+    color: #ef4444;
 }
 
+/* Detail View */
 .detailContainer {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .metaSection {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
 }
 
 .fileInfo h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
 }
 
 .fileMeta {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
     display: flex;
     gap: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .summarySection {
-    background-color: white;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
+    background: white;
+    padding: 3rem;
+    border-radius: var(--radius-xl);
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
-.summarySection h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.sectionTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 4px;
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+/* Upload Page */
+.uploadCard {
+    max-width: 600px;
+    margin: 2rem auto;
 }
 
 .uploadZone {
     border: 2px dashed var(--border);
-    border-radius: var(--radius-lg);
-    padding: 4rem 2rem;
+    border-radius: var(--radius-xl);
+    padding: 5rem 2rem;
     text-align: center;
-    background-color: white;
+    background: var(--surface-secondary);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .uploadZone:hover {
     border-color: var(--primary);
-    background-color: var(--surface);
+    background: rgba(99, 102, 241, 0.03);
+    transform: scale(1.02);
+}
+
+.uploadIconPulse {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(99, 102, 241, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .headerRow {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchWrapper {
+        max-width: none;
+    }
+
+    .metaSection {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .fileMeta {
+        justify-content: center;
+    }
 }

@@ -1,11 +1,9 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/Button';
-import { FileText, PlayCircle, MessageSquare } from 'lucide-react';
+import { PlayCircle, MessageSquare } from 'lucide-react';
 import styles from './Documents.module.css';
 
 export const DocumentDetail = () => {
-    const { id } = useParams();
     const navigate = useNavigate();
 
     return (

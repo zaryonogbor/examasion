@@ -1,132 +1,236 @@
 .landing {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: #fdfdfd;
+    overflow-x: hidden;
 }
 
 .header {
+    height: 90px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border);
+    justify-content: space-between;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .navLinks {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .hero {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 1rem;
+    padding: 8rem 5% 10rem;
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Background blob decorations for hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .heroTitle {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -0.04em;
+    color: var(--text-main);
 }
 
 .highlight {
     color: var(--primary);
-    background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0;
+    width: 100%;
+    height: 0.15em;
+    background: rgba(99, 102, 241, 0.2);
+    z-index: -1;
 }
 
 .heroSubtitle {
-    font-size: 1.25rem;
-    color: var(--muted-foreground);
-    max-width: 600px;
-    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
     line-height: 1.6;
 }
 
 .ctaGroup {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
+.primaryCta {
+    padding: 0 !important;
+    width: 240px !important;
+    height: 60px !important;
+    font-size: 1.125rem !important;
+    border-radius: var(--radius-full) !important;
+}
+
+.outlineCta {
+    width: 200px !important;
+    height: 60px !important;
+    font-size: 1.125rem !important;
+    border-radius: var(--radius-full) !important;
+}
+
+/* Features Section */
 .features {
-    padding: 4rem 1rem;
-    background-color: var(--card);
+    padding: 10rem 5%;
+    background: #f8fafc;
+    position: relative;
 }
 
 .sectionTitle {
+    font-size: 3rem;
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    font-weight: 700;
+    margin-bottom: 5rem;
+    letter-spacing: -0.02em;
 }
 
 .featureGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .featureCard {
-    background: var(--background);
-    padding: 2rem;
-    border-radius: var(--radius);
+    background: white;
+    padding: 3.5rem 2.5rem;
+    border-radius: var(--radius-xl);
     border: 1px solid var(--border);
-    transition: transform 0.2s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .featureCard:hover {
-    transform: translateY(-5px);
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary);
 }
 
 .featureIcon {
+    width: 72px;
+    height: 72px;
+    background: var(--surface-secondary);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.featureCard:hover .featureIcon {
+    background: var(--primary);
+    color: white;
+    transform: rotate(10deg) scale(1.1);
 }
 
 .featureCard h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .featureCard p {
-    color: var(--muted-foreground);
-    line-height: 1.5;
+    color: var(--text-secondary);
+    line-height: 1.7;
 }
 
 .footer {
+    padding: 4rem 5%;
     text-align: center;
-    padding: 2rem;
-    color: var(--muted-foreground);
-    border-top: 1px solid var(--border);
-    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-light);
 }
 
-@media (max-width: 768px) {
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
     .heroTitle {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .featureGrid {
         grid-template-columns: 1fr;
+    }
+
+    .featureCard {
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.75rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.25rem;
+    }
+
+    .ctaGroup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primaryCta,
+    .outlineCta {
+        width: 100% !important;
+        max-width: 320px;
+    }
+
+    .header {
+        height: 80px;
     }
 }

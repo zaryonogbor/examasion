@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/Button';
-import { Send, Bot, User } from 'lucide-react';
+import { Send, Sparkles } from 'lucide-react';
 import styles from './Chat.module.css';
 
 interface Message {
@@ -11,7 +11,7 @@ interface Message {
 
 export const Chat = () => {
     const [messages, setMessages] = useState<Message[]>([
-        { id: '1', text: 'Hello! I am your research assistant. I can answer questions based on the documents you have uploaded. What would you like to know?', sender: 'ai' }
+        { id: '1', text: "Hello Zaryon! I've analyzed your recent documents. I can help clarify anything from your Psychology or Calculus notes. What's on your mind?", sender: 'ai' }
     ]);
     const [input, setInput] = useState('');
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ export const Chat = () => {
         setTimeout(() => {
             setMessages(prev => [...prev, {
                 id: (Date.now() + 1).toString(),
-                text: "That's a great question. Based on 'Introduction to Psychology.pdf', structuralism is the early school of psychology that used introspection to explore the structural elements of the human mind.",
+                text: "Based on 'Advanced Calculus Notes', the fundamental theorem of line integrals relates a line integral through a vector field to the values of its scalar potential at the endpoints of the curve. Would you like an example?",
                 sender: 'ai'
             }]);
         }, 1500);
@@ -44,8 +44,9 @@ export const Chat = () => {
     return (
         <div className={styles.chatContainer}>
             <div className={styles.messageList}>
-                <div style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1rem', padding: '0.5rem', backgroundColor: '#e0f2fe', borderRadius: '4px', alignSelf: 'center' }}>
-                    Answers are generated based only on your uploaded content.
+                <div className={styles.notice}>
+                    <Sparkles size={14} style={{ marginRight: '6px' }} />
+                    AI Assistant is leveraging your specific study context
                 </div>
 
                 {messages.map((msg) => (
@@ -61,20 +62,19 @@ export const Chat = () => {
 
             <div className={styles.inputArea}>
                 <input
-                    className="input"
-                    style={{
-                        flex: 1,
-                        padding: '0.75rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--border)',
-                        fontFamily: 'inherit'
-                    }}
-                    placeholder="Ask a question about your documents..."
+                    className={styles.premiumInput}
+                    placeholder="Ask anything about your study materials..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 />
-                <Button onClick={handleSend} leftIcon={<Send size={18} />}>Send</Button>
+                <Button
+                    className={styles.sendBtn}
+                    onClick={handleSend}
+                    leftIcon={<Send size={18} />}
+                >
+                    Send
+                </Button>
             </div>
         </div>
     );

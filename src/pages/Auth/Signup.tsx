@@ -1,69 +1,86 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import styles from './Auth.module.css';
 
 export const Signup = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError('');
+
         if (password !== confirmPassword) {
-            alert("Passwords don't match");
+            setError('Passwords do not match');
             return;
         }
-        setLoading(true);
-        // Simulate signup delay
+
+        setIsLoading(true);
         setTimeout(() => {
-            setLoading(false);
+            setIsLoading(false);
             navigate('/dashboard');
-        }, 1000);
+        }, 800);
     };
 
     return (
         <div className={styles.authContainer}>
             <div className={styles.authCard}>
-                <h1 className={styles.title}>Create Account</h1>
-                <p className={styles.subtitle}>Start mastering your subjects today</p>
+                <div className={styles.brand}>Examasion</div>
+                <h1 className={styles.title}>Get Started</h1>
+                <p className={styles.subtitle}>Join thousands of students and transform your study habits today.</p>
 
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <Input
-                        label="Email"
+                        placeholder="Your Full Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className={styles.premiumInput}
+                    />
+                    <Input
                         type="email"
-                        placeholder="you@example.com"
+                        placeholder="Email Address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        className={styles.premiumInput}
                     />
                     <Input
-                        label="Password"
                         type="password"
-                        placeholder="••••••••"
+                        placeholder="Create Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        className={styles.premiumInput}
+                        error={error ? ' ' : undefined} // Just highlighting the box
                     />
                     <Input
-                        label="Confirm Password"
                         type="password"
-                        placeholder="••••••••"
+                        placeholder="Confirm Password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
-                        error={confirmPassword && password !== confirmPassword ? "Passwords do not match" : undefined}
+                        className={styles.premiumInput}
+                        error={error}
                     />
-                    <Button type="submit" fullWidth isLoading={loading}>
-                        Sign Up
-                    </Button>
+
+                    <div style={{ marginTop: '1rem' }}>
+                        <Button type="submit" fullWidth isLoading={isLoading} size="lg">
+                            Create My Account
+                        </Button>
+                    </div>
                 </form>
 
                 <div className={styles.footer}>
-                    Already have an account? <Link to="/login" className={styles.link}>Log In</Link>
+                    Already a member?
+                    <Link to="/login" className={styles.link}> Sign in here</Link>
                 </div>
             </div>
         </div>

@@ -1,16 +1,10 @@
 .card {
-    background-color: white;
+    background: white;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.hoverable:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .padding-none {
@@ -26,5 +20,11 @@
 }
 
 .padding-lg {
-    padding: 2rem;
+    padding: 2.5rem;
+}
+
+.hoverable:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary);
 }

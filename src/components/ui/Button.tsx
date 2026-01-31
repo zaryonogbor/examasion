@@ -3,11 +3,12 @@ import { clsx } from 'clsx';
 import styles from './Button.module.css';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg';
     fullWidth?: boolean;
     isLoading?: boolean;
     leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
@@ -19,6 +20,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     className,
     disabled,
     leftIcon,
+    rightIcon,
     ...props
 }, ref) => {
     return (
@@ -35,9 +37,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
             disabled={disabled || isLoading}
             {...props}
         >
-            {isLoading && <span className="animate-spin">⌛</span>}
-            {!isLoading && leftIcon && <span className="icon">{leftIcon}</span>}
-            {children}
+            {isLoading && <span className={styles.spinner}></span>}
+            {!isLoading && leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
+            <span className={styles.content}>{children}</span>
+            {!isLoading && rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
         </button>
     );
 });

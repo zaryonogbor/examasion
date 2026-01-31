@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import type { User } from '../types';
-import { auth } from '../lib/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+// Firebase imports - uncomment when configuring Firebase
+// import { auth } from '../lib/firebase';
+// import { onAuthStateChanged } from 'firebase/auth';
 
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -27,14 +28,6 @@ export const useAuth = () => {
     return () => unsubscribe();
     */
 
-    // Mock auth state for demo
-    const mockUser: User = {
-      uid: '12345',
-      email: 'user@example.com',
-      displayName: 'Demo User',
-      createdAt: new Date()
-    };
-
     // Simulate checking auth
     const timer = setTimeout(() => {
       // By default we aren't logged in for the demo until they hit login
@@ -49,7 +42,7 @@ export const useAuth = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const login = async (email: string, pass: string) => {
+  const login = async (email: string, _password: string) => {
     // Mock login
     const mockUser: User = {
       uid: '12345',
