@@ -259,9 +259,30 @@
 
     .docSidebar {
         width: 100%;
-        max-height: 200px;
+        max-height: 240px;
         order: -1;
-        /* Move sidebar to top on mobile */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .docsList {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+    }
+
+    /* Professional scrollbar for docs */
+    .docsList::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .docsList::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .docsList::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 10px;
     }
 
     .chatMain {
@@ -278,6 +299,19 @@
     }
 
     .inputArea {
-        padding: 1rem 1.25rem;
+        padding: 1.25rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .sendBtn {
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    .premiumInput {
+        width: 100%;
+        border-radius: var(--radius-lg);
     }
 }

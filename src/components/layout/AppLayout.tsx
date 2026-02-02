@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, User, Menu, X, Sun, Moon } from 'lucide-react';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, FileText, CheckSquare, MessageSquare, BarChart, Settings as SettingsIcon, Menu, X, ChevronDown, Bell, LogOut } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import styles from './AppLayout.module.css';
 import { clsx } from 'clsx';
 
 export const AppLayout = () => {
     const location = useLocation();
-    const { theme, toggleTheme } = useTheme();
+    const navigate = useNavigate();
+    const { } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
@@ -16,7 +17,7 @@ export const AppLayout = () => {
         { icon: CheckSquare, label: 'Practice Tests', path: '/practice' },
         { icon: MessageSquare, label: 'Chat', path: '/chat' },
         { icon: BarChart, label: 'Analytics', path: '/analytics' },
-        { icon: User, label: 'Profile', path: '/profile' },
+        { icon: SettingsIcon, label: 'Settings', path: '/settings' },
     ];
 
     useEffect(() => {
@@ -33,6 +34,10 @@ export const AppLayout = () => {
             document.body.style.overflow = '';
         };
     }, [isMobileMenuOpen]);
+
+    const handleLogout = () => {
+        navigate('/login');
+    };
 
     const getPageTitle = () => {
         const item = navItems.find(i => location.pathname.startsWith(i.path));
@@ -74,13 +79,10 @@ export const AppLayout = () => {
                     ))}
                 </nav>
                 <div className={styles.footer}>
-                    <div className={styles.userProfile}>
-                        <div className={styles.avatar}>Z</div>
-                        <div style={{ flex: 1, overflow: 'hidden' }}>
-                            <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>Zaryon Ogbor</div>
-                            <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>user@example.com</div>
-                        </div>
-                    </div>
+                    <button className={styles.logoutButton} onClick={handleLogout}>
+                        <LogOut size={18} />
+                        <span>Logout Session</span>
+                    </button>
                 </div>
             </aside>
             <main className={styles.main}>
@@ -96,13 +98,19 @@ export const AppLayout = () => {
                         <h1 className={styles.pageTitle}>{getPageTitle()}</h1>
                     </div>
 
-                    <button
-                        onClick={toggleTheme}
-                        className={styles.themeToggle}
-                        aria-label="Toggle theme"
-                    >
-                        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-                    </button>
+                    <div className={styles.headerRight}>
+                        <button className={styles.notificationButton} aria-label="Notifications">
+                            <Bell size={20} />
+                            <span className={styles.notificationBadge}></span>
+                        </button>
+                        <div className={styles.userProfileHeader}>
+                            <div className={styles.userInfo}>
+                                <div className={styles.userName}>Zaryon Ogbor</div>
+                            </div>
+                            <div className={styles.avatar}>Z</div>
+                            <ChevronDown size={16} color="var(--text-muted)" />
+                        </div>
+                    </div>
                 </header>
                 <div className={styles.content}>
                     <Outlet />

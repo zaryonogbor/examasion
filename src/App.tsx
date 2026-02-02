@@ -12,7 +12,7 @@ import { CbtTest } from './pages/Practice/CbtTest';
 import { TestResults } from './pages/Results/TestResults';
 import { Chat } from './pages/Chat';
 import { Analytics } from './pages/Analytics';
-import { Profile } from './pages/Profile';
+import { Settings } from './pages/Settings';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
 
           <Route path="/chat" element={<Chat />} />
           <Route path="/analytics" element={<Analytics />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
 
         {/* Fallback */}

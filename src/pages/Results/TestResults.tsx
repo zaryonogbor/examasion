@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/ui/Button';
-import { ArrowLeft, ArrowRight, RotateCcw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, RotateCcw, CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 import styles from './Results.module.css';
 
 export const TestResults = () => {
@@ -48,38 +48,86 @@ export const TestResults = () => {
             </div>
 
             <div className={styles.reviewSection}>
-                <h2 className="sectionTitle">Analysis & Explanations</h2>
-
-                <div className={styles.reviewItem}>
-                    <div className={styles.questionHeader}>
-                        <div className={`${styles.indicator} ${styles.indicatorCorrect}`}>Correct</div>
-                        <div className={styles.questionText}>
-                            Which of the following best describes the "Structuralist" school of psychology?
-                        </div>
-                    </div>
-                    <div className={styles.answerRow}>
-                        <div><span className={styles.answerLabel}>Your Choice:</span> Analyzes consciousness into its basic elements</div>
-                    </div>
-                    <div className={styles.explanation}>
-                        <div className={styles.explanationTitle}>AI Insight</div>
-                        <p>Structuralism, founded by Wilhelm Wundt, used introspection to map out the structure of the mind. You correctly identified the reductionist nature of this school.</p>
-                    </div>
+                <div className={styles.reviewHeader}>
+                    <h2 className={styles.sectionTitle}>Analysis & Explanations</h2>
+                    <p className={styles.sectionSubtitle}>Detailed breakdown of your performance with AI-driven insights.</p>
                 </div>
 
-                <div className={styles.reviewItem}>
-                    <div className={styles.questionHeader}>
-                        <div className={`${styles.indicator} ${styles.indicatorWrong}`}>Incorrect</div>
-                        <div className={styles.questionText}>
-                            Who is considered the father of Psychoanalysis?
+                <div className={styles.reviewGrid}>
+                    <div className={styles.reviewItem}>
+                        <div className={styles.reviewItemHeader}>
+                            <div className={styles.itemMeta}>
+                                <span className={styles.questionNumber}>Question 1</span>
+                                <div className={`${styles.statusBadge} ${styles.statusCorrect}`}>
+                                    <CheckCircle2 size={14} />
+                                    <span>Correct</span>
+                                </div>
+                            </div>
+                            <h3 className={styles.questionText}>
+                                Which of the following best describes the "Structuralist" school of psychology?
+                            </h3>
+                        </div>
+
+                        <div className={styles.answerContent}>
+                            <div className={styles.answerBlock}>
+                                <div className={styles.answerLabel}>Your Response</div>
+                                <div className={`${styles.answerValue} ${styles.valueCorrect}`}>
+                                    Analyzes consciousness into its basic elements
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.explanationBox}>
+                            <div className={styles.explanationHeader}>
+                                <Sparkles size={16} className={styles.aiIcon} />
+                                <span>AI Insight</span>
+                            </div>
+                            <p className={styles.explanationText}>
+                                Structuralism, founded by Wilhelm Wundt, used introspection to map out the structure of the mind. You correctly identified the reductionist nature of this school.
+                            </p>
                         </div>
                     </div>
-                    <div className={styles.answerRow}>
-                        <div style={{ color: 'var(--error)' }}><span className={styles.answerLabel}>Your Choice:</span> William James</div>
-                        <div style={{ color: 'var(--success)', fontWeight: 700 }}><span className={styles.answerLabel}>Correct Answer:</span> Sigmund Freud</div>
-                    </div>
-                    <div className={styles.explanation}>
-                        <div className={styles.explanationTitle}>AI Insight</div>
-                        <p>Sigmund Freud developed psychoanalysis. William James actually founded "Functionalism". Focus on the distinctions between these early pioneers for your midterm.</p>
+
+                    <div className={styles.reviewItem}>
+                        <div className={styles.reviewItemHeader}>
+                            <div className={styles.itemMeta}>
+                                <span className={styles.questionNumber}>Question 2</span>
+                                <div className={`${styles.statusBadge} ${styles.statusWrong}`}>
+                                    <XCircle size={14} />
+                                    <span>Incorrect</span>
+                                </div>
+                            </div>
+                            <h3 className={styles.questionText}>
+                                Who is considered the father of Psychoanalysis?
+                            </h3>
+                        </div>
+
+                        <div className={styles.answerContent}>
+                            <div className={styles.answerGrid}>
+                                <div className={styles.answerBlock}>
+                                    <div className={styles.answerLabel}>Your Response</div>
+                                    <div className={`${styles.answerValue} ${styles.valueWrong}`}>
+                                        William James
+                                    </div>
+                                </div>
+                                <div className={styles.answerBlock}>
+                                    <div className={styles.answerLabel}>Correct Answer</div>
+                                    <div className={`${styles.answerValue} ${styles.valueSuccess}`}>
+                                        Sigmund Freud
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.explanationBox}>
+                            <div className={styles.explanationHeader}>
+                                <Sparkles size={16} className={styles.aiIcon} />
+                                <span>AI Insight</span>
+                            </div>
+                            <p className={styles.explanationText}>
+                                Sigmund Freud developed psychoanalysis. William James actually founded "Functionalism". Focus on the distinctions between these early pioneers for your midterm.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
