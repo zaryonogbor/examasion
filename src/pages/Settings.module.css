@@ -259,6 +259,21 @@
     color: var(--text-muted);
 }
 
+.premiumInput {
+    border-radius: var(--radius-full) !important;
+    padding: 0.875rem 1.5rem !important;
+    background-color: var(--input-bg) !important;
+}
+
+.premiumInput:focus {
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Ensure textarea doesn't get fully round corners but still matches theme */
+textarea.premiumInput {
+    border-radius: var(--radius-xl) !important;
+}
+
 @media (max-width: 1024px) {
     .settingsGrid {
         grid-template-columns: 1fr;

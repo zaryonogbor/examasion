@@ -122,7 +122,7 @@
 
 .premiumInput {
     flex: 1;
-    background: var(--surface);
+    background: var(--input-bg);
     border: 1px solid var(--border);
     padding: 0.875rem 1.5rem;
     border-radius: var(--radius-full);

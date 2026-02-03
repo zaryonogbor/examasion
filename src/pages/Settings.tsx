@@ -85,10 +85,10 @@ export const Settings = () => {
                         />
 
                         <div className={styles.formGrid}>
-                            <Input label="Full Name" defaultValue="Zaryon Ogbor" />
-                            <Input label="Username" defaultValue="zaryon_o" />
+                            <Input label="Full Name" defaultValue="Zaryon Ogbor" inputClassName={styles.premiumInput} />
+                            <Input label="Username" defaultValue="zaryon_o" inputClassName={styles.premiumInput} />
                             <div className={styles.fullWidth}>
-                                <Input label="Email Address" defaultValue="user@example.com" />
+                                <Input label="Email Address" defaultValue="user@example.com" inputClassName={styles.premiumInput} />
                             </div>
                             <div className={styles.fullWidth}>
                                 <Input
@@ -96,6 +96,7 @@ export const Settings = () => {
                                     as="textarea"
                                     placeholder="Tell us a bit about yourself..."
                                     defaultValue="Passionate student focused on cognitive psychology and neuroplasticity."
+                                    inputClassName={styles.premiumInput}
                                 />
                             </div>
                         </div>
@@ -116,10 +117,10 @@ export const Settings = () => {
                         </div>
 
                         <div className={styles.formGrid}>
-                            <Input label="Current Password" type="password" placeholder="••••••••" />
-                            <Input label="New Password" type="password" placeholder="••••••••" />
+                            <Input label="Current Password" type="password" placeholder="••••••••" inputClassName={styles.premiumInput} />
+                            <Input label="New Password" type="password" placeholder="••••••••" inputClassName={styles.premiumInput} />
                             <div className={styles.fullWidth}>
-                                <Input label="Confirm New Password" type="password" placeholder="••••••••" />
+                                <Input label="Confirm New Password" type="password" placeholder="••••••••" inputClassName={styles.premiumInput} />
                             </div>
                         </div>
 

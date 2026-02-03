@@ -22,7 +22,7 @@
     padding: 0.625rem 0.75rem;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    background-color: var(--surface-secondary);
+    background-color: var(--input-bg);
     transition: border-color 0.2s, box-shadow 0.2s;
     font-family: inherit;
     font-size: 0.95rem;
@@ -33,6 +33,13 @@
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+    padding-top: 0.875rem;
+    border-radius: var(--radius-lg);
 }
 
 .input:disabled {

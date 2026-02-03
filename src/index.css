@@ -13,6 +13,7 @@
   --background: #fdfdfd;
   --surface: #ffffff;
   --surface-secondary: #f8fafc;
+  --input-bg: var(--surface-secondary);
   --glass: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.3);
 
@@ -53,6 +54,7 @@
   /* Slate 800 */
   --surface-secondary: #020617;
   /* Very Dark Slate */
+  --input-bg: rgba(255, 255, 255, 0.03);
 
   --glass: rgba(30, 41, 59, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
